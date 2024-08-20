@@ -1,48 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./SpellDictionary.css";
 
 export default function SpellDictionary() {
-   const [keyword, setKeyword] = useState(" ");
-   const [spellMapping, setSpellMapping] = useState({});
-
-    // Fetch and map spell names to slugs
-    useEffect(() => {
-        fetch('https://api.potterdb.com/v1/spells')
-            .then(response => response.json())
-            .then(data => {
-                const spells = data.data;
-                const mapping = spells.reduce((acc, spell) => {
-                    const { name, slug } = spell.attributes;
-                    acc[name.toLowerCase()] = slug; // Use lowercased name for case-insensitive search
-                    return acc;
-                }, {});
-                setSpellMapping(mapping);
-            })
-            .catch(error => console.error('Error fetching spells:', error));
-    }, []); // Empty dependency array means this effect runs once on component mount
-
+   const [keyword, setKeyword] = useState("");
+   const [spellData, setSpellData] = useState(null);
+   const [error, setError] = useState("");
 
    function handleResponse(response) {
-    console.log(response.data); 
-};
+       if (response.data) {
+           setSpellData(response.data); // Store the API response in state
+           setError(""); // Clear any previous error
+       } else {
+           setError("Spell not found!");
+           setSpellData(null);
+       }
+    };
 
-//documentation here https://docs.potterdb.com/apis/rest
-function search(event) {
-    event.preventDefault();
-    const spellSlug = spellMapping[keyword.toLowerCase()]; // Look up the slug by keyword
-    if (spellSlug) {
-        const apiUrl = `https://api.potterdb.com/v1/spells/${spellSlug}`;
-        axios.get(apiUrl).then(handleResponse);
-    } else {
-        alert('Spell not found!');
-    }
-};
+    function search(event) {
+        event.preventDefault();
+
+        const spell = keyword.toLowerCase().replace(/\s/g, '_'); // Replace spaces with underscores for case-insensitive search
+        if (keyword) {
+            const apiUrl = `https://potterhead-api.vercel.app/api/spells/${spell}`;
+            axios.get(apiUrl).then(handleResponse).catch((error) => {
+                setError("An error occurred. Please try again.");
+                setSpellData(null);
+            });
+        } else {
+            setError('Please enter a spell name!');
+            setSpellData(null);
+        }
+    };
 
    function handleKeywordChange(event) {
     setKeyword(event.target.value);
 }
-   
+
     return (
             <div className="SpellDictionary">
                <form onSubmit={search}>
@@ -54,6 +48,13 @@ function search(event) {
                 />
 
                </form>
+               {error && <p className="error">{error}</p>}
+               {spellData && (
+                   <div className="spell-info">
+                       <h2>{spellData.name}</h2>
+                       <p><strong>Description:</strong> {spellData.description}</p>
+                   </div>
+               )}
             </div>
         );
 }
