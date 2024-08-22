@@ -1,11 +1,27 @@
+:root {
+ --primary-font-family: "UnifrakturMaguntia", cursive;
+ --secondary-font-family: "Uncial Antiqua", system-ui; 
+ --text-font-family:"IM Fell English", serif;
+}
+
 .App-logo {
-  max-width: 150px;
+  max-width: 100px;
   display: block;
   margin: 15px 0px;
 }
 
 .App h1 {
-  margin: 0 auto;
+  font-family: var(--primary-font-family);
+  font-size: 48px;
+}
+
+.App h2 {
+  font-family: var(--text-font-family);
+  font-size: 25px;
+}
+
+.App h1, h2 {
+  margin: 25px auto;
   text-align: center;
 }
 
