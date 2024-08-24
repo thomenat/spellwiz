@@ -12,7 +12,9 @@ export default function App() {
       <main>
         <SpellDictionary />
       </main>
-      <footer className="text-center">Coded by Natália Thomé</footer>
+      <footer className="text-center">Coded by
+      <a href="https://github.com/nataliathome"> Natália Thomé</a>
+      </footer>
       </div>
     </div>
   );
