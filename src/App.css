@@ -4,6 +4,22 @@
  --text-font-family:"IM Fell English", serif;
 }
 
+body {
+  background: linear-gradient(to bottom, #fdf4dc, #f5e6b3);
+  color: #000;
+  padding: 20px;
+}
+
+.container {
+  background: linear-gradient(to bottom, #fdf4dc, #f5e6b3);
+  border: 2px solid #d4af37;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
 .App-logo {
   max-width: 100px;
   display: block;
@@ -15,9 +31,10 @@
   font-size: 48px;
 }
 
-.App h2 {
+.App .slogan {
   font-family: var(--text-font-family);
   font-size: 25px;
+  font-style:italic; 
 }
 
 .App h1, h2 {
@@ -27,4 +44,5 @@
 
 .App footer {
   margin: 30px 0;
+  font-family: var(--text-font-family);
 }

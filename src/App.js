@@ -7,7 +7,7 @@ export default function App() {
     <div className="App">
       <div className="container">
       <h1>Spell Wiz</h1>
-      <h2>Unlock the Magic, One Spell at a Time</h2>
+      <h2 className='slogan'>Your Complete Guide to Harry Potter Spells</h2>
       <img src={golden}  className="App-logo" alt="Golden" />
       <main>
         <SpellDictionary />

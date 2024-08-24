@@ -46,15 +46,17 @@ export default function SpellDictionary() {
                 placeholder="Type a spell..."
                 onChange={handleKeywordChange}
                 />
-
+                <input className="revealButton" type="submit" value="Reveal" />
                </form>
+
+
                {error && <p className="error">{error}</p>}
                {spellData && (
                    <div className="spell-info">
                        <h2>{spellData.name}</h2>
                        <p><strong>Description:</strong> {spellData.description}</p>
                    </div>
-               )}
-            </div>
+               )}            
+               </div>
         );
 }
