@@ -49,14 +49,21 @@ export default function SpellDictionary() {
                 <input className="revealButton" type="submit" value="Reveal" />
                </form>
 
-
-               {error && <p className="error">{error}</p>}
-               {spellData && (
-                   <div className="spell-info">
-                       <h2>{spellData.name}</h2>
-                       <p><strong>Description:</strong> {spellData.description}</p>
-                   </div>
-               )}            
-               </div>
-        );
+                    {(() => {
+            if (spellData) {
+                return (
+                    <div className="spell-info">
+                        <h2>{spellData.name}</h2>
+                        <p><strong>Description:</strong> {spellData.description}</p>
+                    </div>
+                );
+            } else if (error) {
+                return (
+                    <p className="error">{error}</p>
+                );
+            }
+            return null; // Render nothing if there is no error or spellData
+        })()}
+        </div>
+    );
 }
