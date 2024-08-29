@@ -2,33 +2,38 @@
  --primary-font-family: "UnifrakturMaguntia", cursive;
  --secondary-font-family: "Uncial Antiqua", system-ui; 
  --text-font-family:"IM Fell English", serif;
+ --primary-color: #D4AF37;
+ --secondary-color: #512b6b;
 }
 
 body {
-  background: linear-gradient(to bottom, #fdf4dc, #f5e6b3);
-  color: #000;
+  background: radial-gradient(circle at center, #2b1d42, #2b1d42 40%, #301e47 70%, #3d2a5c 85%, #512b6b);  color: #000;
   padding: 20px;
+  color: var(--primary-color);
 }
 
 .container {
-  background: linear-gradient(to bottom, #fdf4dc, #f5e6b3);
-  border: 2px solid #d4af37;
+  border: 2px solid var(--primary-color);
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
 }
 
 .App-logo {
   max-width: 100px;
-  display: block;
-  margin: 15px 0px;
+  margin: 10px auto;
+  color: var(--primary-color) !important;
+  background-color: transparent;
+
 }
 
 .App h1 {
   font-family: var(--primary-font-family);
   font-size: 48px;
+  margin: 25px 0;
+  text-transform: capitalize;
 }
 
 .App .slogan {
@@ -38,11 +43,20 @@ body {
 }
 
 .App h1, h2 {
-  margin: 25px auto;
   text-align: center;
+}
+
+.App h2 {
+  font-size: 24px;
+  margin: 0 0 45px 0;
 }
 
 .App footer {
   margin: 30px 0;
   font-family: var(--text-font-family);
+}
+
+footer a {
+  color: white;
+
 }
