@@ -24,7 +24,7 @@ body {
 .App-logo {
   max-width: 100px;
   margin: 10px auto;
-  color: var(--primary-color) !important;
+  color: white;
   background-color: transparent;
 
 }
