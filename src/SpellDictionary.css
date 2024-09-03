@@ -25,17 +25,24 @@ form {
 
 .SpellDictionary .spell-info h2 {
     font-weight: bolder;
-    font-size: 35px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 0 5px 0;
 }
 
 .SpellDictionary .spell-info p {
-    font-size: 22px;
+    font-size: 20px;
+    margin: 35px auto;
+    text-align: left;
 }
 
 .spell-info {
-    margin: 0 auto;
-    padding: 20px;
+    margin: 30px auto;
+    padding: 50px;
+    width: 480px;
     font-family: var(--text-font-family);
-    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 34px;
 
 }

@@ -12,7 +12,8 @@ export default function App() {
       </div>
       <h2 className='slogan'>Your Complete Guide to Harry Potter Spells</h2>
       <main>
-        <SpellDictionary />
+        <h3>Type a spell:</h3>
+        <SpellDictionary defaultKeyword="lumos"/>
       </main>
       <footer className="text-center">Coded by
       <a href="https://github.com/nataliathome"> Natália Thomé</a>
