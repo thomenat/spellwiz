@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import "./SpellDictionary.css";
 
@@ -29,8 +29,7 @@ export default function SpellDictionary(props) {
         }
     }
 
-    function search(event) {
-        
+    const search = useCallback((event) => {
         if (event) {
             event.preventDefault();
         }
@@ -41,14 +40,15 @@ export default function SpellDictionary(props) {
             axios.get(apiUrl)
                 .then(handleResponse)
                 .catch((error) => {
+                    console.error("API request failed:", error);
                     setError("An error occurred. Please try again.");
                     setSpellData(null);
                 });
-        } else {
+                    } else {
             setError('Please enter a spell name!');
             setSpellData(null);
         }
-    }
+    }, [keyword]); // keyword is the only dependency
 
     function handleKeywordChange(event) {
         setKeyword(event.target.value);
@@ -57,7 +57,7 @@ export default function SpellDictionary(props) {
       // Use useEffect to trigger the default search when the component mounts
       useEffect(() => {
         search();
-    }, []); // Empty dependency array means this effect runs once when the component mounts
+    }, [search]); // Empty dependency array means this effect runs once when the component mounts
 
     return (
         <div className="SpellDictionary">
