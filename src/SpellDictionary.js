@@ -15,6 +15,8 @@ export default function SpellDictionary(props) {
                 spellIncantation: response.data.data[0].attributes.incantation,
                 spellName: response.data.data[0].attributes.name,
                 spellEffect: response.data.data[0].attributes.effect.toLowerCase(),
+                spellCategory: response.data.data[0].attributes.category.toLowerCase(),
+                spellLight: response.data.data[0].attributes.light.toLowerCase(),
                 spellImage: response.data.data[0].attributes.image,
             }); // Store the API response in state
             setError(""); // Clear any previous error
@@ -54,7 +56,7 @@ export default function SpellDictionary(props) {
       // Use useEffect to trigger the default search when the component mounts
       useEffect(() => {
         search();
-    }, []); // Empty dependency array means this effect runs once when the component mounts
+    }, [search]); // Empty dependency array means this effect runs once when the component mounts
 
     return (
         <div className="SpellDictionary">
@@ -74,7 +76,10 @@ export default function SpellDictionary(props) {
                     <h2>{spellData.spellName}</h2>
                     <h3>{spellData.spellIncantation}</h3>
                     <p>
-                    <strong>Effect:</strong> {spellData.spellEffect} 
+                    <strong>Effect:</strong> {spellData.spellEffect} <br/>
+                    <strong>Category:</strong> {spellData.spellCategory} <br/>
+                    <strong>Light:</strong> {spellData.spellLight} 
+                    
                         </p>
                     <img className="spell-image" src={spellData.spellImage}>
                     </img>

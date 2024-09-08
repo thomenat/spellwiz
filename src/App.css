@@ -66,9 +66,9 @@ main {
 .App footer {
   margin: 30px 0;
   font-family: var(--text-font-family);
+  font-size: 13px;
 }
 
 footer a {
   color: white;
-
 }
