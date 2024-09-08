@@ -30,6 +30,7 @@ export default function SpellDictionary(props) {
     }
 
     function search(event) {
+        
         if (event) {
             event.preventDefault();
         }
@@ -56,7 +57,7 @@ export default function SpellDictionary(props) {
       // Use useEffect to trigger the default search when the component mounts
       useEffect(() => {
         search();
-    }, [search]); // Empty dependency array means this effect runs once when the component mounts
+    }, []); // Empty dependency array means this effect runs once when the component mounts
 
     return (
         <div className="SpellDictionary">
@@ -81,7 +82,7 @@ export default function SpellDictionary(props) {
                     <strong>Light:</strong> {spellData.spellLight} 
                     
                         </p>
-                    <img className="spell-image" src={spellData.spellImage}>
+                    <img className="spell-image" src={spellData.spellImage} alt="illustration of the spell">
                     </img>
                 </div>
             )}
