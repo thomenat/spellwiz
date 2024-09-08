@@ -7,11 +7,19 @@ export default function SpellDictionary(props) {
     const [spellData, setSpellData] = useState("");
     const [error, setError] = useState("");
 
+
     function handleResponse(response) {
-            // Ensure that response contains valid spell data
-        if (response.data && response.data.name && response.data.description) {
-            setSpellData(response.data); // Store the API response in state
+ 
+        if (response.data && response.data.data && response.data.data.length > 0) {
+            setSpellData({
+                spellIncantation: response.data.data[0].attributes.incantation,
+                spellName: response.data.data[0].attributes.name,
+                spellEffect: response.data.data[0].attributes.effect.toLowerCase(),
+                spellImage: response.data.data[0].attributes.image,
+            }); // Store the API response in state
             setError(""); // Clear any previous error
+
+
         } else {
             // If the spell doesn't exist or the response is incomplete
             setError("Spell not found!");
@@ -24,9 +32,9 @@ export default function SpellDictionary(props) {
             event.preventDefault();
         }
 
-        const spell = keyword.toLowerCase().replace(/\s/g, '%20'); // Replace spaces with %20 for URL encoding
+        const spell = keyword.toLowerCase();
         if (keyword) {
-            const apiUrl = `https://potterhead-api.vercel.app/api/spells/${spell}`;
+            const apiUrl = `https://api.potterdb.com/v1/spells?filter[incantation_cont]=${spell}`;
             axios.get(apiUrl)
                 .then(handleResponse)
                 .catch((error) => {
@@ -43,8 +51,8 @@ export default function SpellDictionary(props) {
         setKeyword(event.target.value);
     }
 
-    // Use useEffect to trigger the default search when the component mounts
-    useEffect(() => {
+      // Use useEffect to trigger the default search when the component mounts
+      useEffect(() => {
         search();
     }, []); // Empty dependency array means this effect runs once when the component mounts
 
@@ -63,8 +71,13 @@ export default function SpellDictionary(props) {
 
             {spellData && (
                 <div className="spell-info">
-                    <h2>{spellData.name}</h2>
-                    <p><strong>Description:</strong> {spellData.description}</p>
+                    <h2>{spellData.spellName}</h2>
+                    <h3>{spellData.spellIncantation}</h3>
+                    <p>
+                    <strong>Effect:</strong> {spellData.spellEffect} 
+                        </p>
+                    <img className="spell-image" src={spellData.spellImage}>
+                    </img>
                 </div>
             )}
 

@@ -13,7 +13,7 @@ export default function App() {
       <h2 className='slogan'>Your Complete Guide to Harry Potter Spells</h2>
       <main>
         <h3>Type a spell:</h3>
-        <SpellDictionary defaultKeyword="lumos"/>
+        <SpellDictionary defaultKeyword="aguamenti"/>
       </main>
       <footer className="text-center">Coded by
       <a href="https://github.com/nataliathome"> Natália Thomé</a>

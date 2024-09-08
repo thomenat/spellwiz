@@ -15,7 +15,7 @@ body {
 .container {
   border: 2px solid var(--primary-color);
   padding: 20px;
-  max-width: 600px;
+  max-width: auto;
   margin: 0 auto;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -46,7 +46,7 @@ body {
   text-align: center;
 }
 
-.App h3 {
+main h3 {
   font-family: var(--secondary-font-family);
   font-size: 19px;
   margin: 80px 0 0 0;
