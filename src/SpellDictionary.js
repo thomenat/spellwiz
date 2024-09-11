@@ -57,7 +57,7 @@ export default function SpellDictionary(props) {
       // Use useEffect to trigger the default search when the component mounts
       useEffect(() => {
         search();
-    }, []); // Empty dependency array means this effect runs once when the component mounts
+    }); // Empty dependency array means this effect runs once when the component mounts
 
     return (
         <div className="SpellDictionary">
