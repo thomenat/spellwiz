@@ -12,7 +12,7 @@ export default function SpellDictionary(props) {
  
         if (response.data && response.data.data && response.data.data.length > 0) {
             setSpellData({
-                spellIncantation: response.data.data[0].attributes.incantation,
+                spellIncantation: response.data.data[0].attributes.incantation.replace(/([a-zA-Z])\(/, '$1 ('),
                 spellName: response.data.data[0].attributes.name,
                 spellEffect: response.data.data[0].attributes.effect.toLowerCase(),
                 spellCategory: response.data.data[0].attributes.category.toLowerCase(),
@@ -57,7 +57,7 @@ export default function SpellDictionary(props) {
       // Use useEffect to trigger the default search when the component mounts
       useEffect(() => {
         search();
-    }, [search]); // Empty dependency array means this effect runs once when the component mounts
+    }, []); // Empty dependency array means this effect runs once when the component mounts
 
     return (
         <div className="SpellDictionary">
@@ -76,13 +76,20 @@ export default function SpellDictionary(props) {
                 <div className="spell-info">
                     <h2>{spellData.spellName}</h2>
                     <h3>{spellData.spellIncantation}</h3>
-                    <p>
-                    <strong>Effect:</strong> {spellData.spellEffect} <br/>
-                    <strong>Category:</strong> {spellData.spellCategory} <br/>
-                    <strong>Light:</strong> {spellData.spellLight} 
+                        <div className="spellEffect">
+                        <strong>Effect</strong> <br/>
+                        {spellData.spellEffect}
+                        </div>
+                        <div className="spellCategory">
+                        <strong>Category</strong>
+                        <br/>{spellData.spellCategory} 
+                        </div>
+                        <div className="spellLight">
+                        <strong>Light</strong> <br/>
+                        {spellData.spellLight} 
+                        </div>
                     
-                        </p>
-                    <img className="spell-image" src={spellData.spellImage} alt="illustration of the spell">
+                    <img className="spell-image img-fluid" src={spellData.spellImage} alt="illustration of the spell">
                     </img>
                 </div>
             )}

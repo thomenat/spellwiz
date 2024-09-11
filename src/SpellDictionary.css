@@ -39,20 +39,27 @@ form {
 
 }
 
-.SpellDictionary .spell-info p {
-    font-size: 20px;
-    margin: 35px auto;
-    text-align: left;
-}
-
 .spell-info {
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 50px;
-    width: 480px;
+    width: 500px;
     font-family: var(--text-font-family);
     background-color: var(--primary-color);
     color: var(--secondary-color);
     border-radius: 34px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.spellEffect, .spellCategory, .spellLight {
+    font-size: 18px;
+    background-color: #dbbc57;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);    
+    width: 390px;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -60,5 +67,27 @@ form {
     display: block;
     text-align: center;
     margin: 0 auto;
-    width: 100%;
+    width: 390px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+}
+
+@media (max-width: 430px) {
+    
+    .spell-info {
+        margin: 20px;
+        padding: 30px;
+        width: auto;
+    }
+
+    .spell-info h2, h3 {
+        font-size: 20px !important;
+    }
+
+    .spellEffect, .spellCategory, .spellLight {
+        width: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
 }
