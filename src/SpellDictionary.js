@@ -88,7 +88,6 @@ export default function SpellDictionary(props) {
                         <strong>Light</strong> <br/>
                         {spellData.spellLight} 
                         </div>
-                    
                     <img className="spell-image img-fluid" src={spellData.spellImage} alt="illustration of the spell">
                     </img>
                 </div>
